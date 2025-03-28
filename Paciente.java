@@ -37,12 +37,12 @@ public class Paciente implements Comparable<Paciente>{
 
     // Método para comparar al paciente con otro, definido como "Siguente"
     public int compareTo(Paciente siguiente){
-        return Character.compare(this.prioridad, siguiente.prioridad);
+        return -Character.compare(this.prioridad, siguiente.prioridad);
     }
 
     // Método par pasar la info del paciente como String
 
     public String toString(){
-        return nombre + "," + lesion + "," + prioridad;
+        return nombre + ", " + lesion + ", " + prioridad;
     }
 }

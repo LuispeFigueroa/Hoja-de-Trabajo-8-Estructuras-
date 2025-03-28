@@ -27,6 +27,7 @@ public class Main {
 
         boolean seguir = true;
         while (seguir) {
+            System.out.println("\nMENU");
             System.out.println("1. Mostrar siguiente en cola");
             System.out.println("2. Atender paciente");
             System.out.println("3. Salir");
@@ -35,25 +36,26 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    Paciente siguiente = cola.devolverMax();
-                    if (siguiente!= null) {
-                        System.out.println("Siguiente paciente: " + siguiente.toString());
+                    try {
+                        Paciente siguiente = cola.devolverMax();
+                        System.out.println("\nSiguiente paciente: " + siguiente.toString());
                     }
-                    else {
-                        System.out.println("No hay pacientes en la cola");
+                    catch (Exception e) {
+                        System.err.println("\nError al devolver al siguiente paciente: " + e.getMessage());
                     }
                     break;
                 case 2:
-                    Paciente atendido = cola.eliminarMax();
-                    if (atendido!= null) {
-                        System.out.println("Paciente atendido: " + atendido.toString());
-                    }
-                    else {
-                        System.out.println("No hay pacientes en la cola");
+                    try {
+                        Paciente atendido = cola.eliminarMax();
+                        System.out.println("\nPaciente atendido: " + atendido.toString());
+                    }    
+                    catch (Exception e) {
+                        System.err.println("\nError al atender al paciente con prioridad máxima: " + e.getMessage());
                     }
                     break;
                 case 3:
                     seguir = false;
+                    System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción inválida");
