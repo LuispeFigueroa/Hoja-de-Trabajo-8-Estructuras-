@@ -20,7 +20,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
      * @param indice
      */
     private void ordenarPorPadre(int indice) {
-        int padre = (indice - 1) / 2;
+        int padre;
         while (indice > 0) {
             if ((indice % 2) == 0) {
                 padre = (indice - 2) / 2;
@@ -28,7 +28,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
             else {
                 padre = (indice - 1) / 2;
             }
-            if (datos.get(padre).compareTo(datos.get(indice)) > 0) {
+            if (datos.get(padre).compareTo(datos.get(indice)) >= 0) {
                 return;
             }
 
@@ -60,26 +60,29 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
+    /**
+     * @param indice
+     */
     private void ordenarPorHijo(int indice) {
+        int tamaño = datos.size();
         int hijoIzquierdo = (2 * indice) + 1;
         int hijoDerecho = (2 * indice) + 2;
         int maximo = indice;
-
-        while (hijoIzquierdo < datos.size()) {
-            if (datos.get(hijoIzquierdo).compareTo(datos.get(maximo)) > 0) {
-                if (datos.get(hijoIzquierdo).compareTo(datos.get(hijoDerecho)) > 0) {
-                    intercambiar(maximo, hijoIzquierdo);
-                }
-                else {
-                    intercambiar(maximo, hijoDerecho);
-                }
-            }
-            else if (datos.get(hijoDerecho).compareTo(datos.get(maximo)) > 0) {
-                intercambiar(maximo, hijoDerecho);
-            }
-            else {
-                return;
-            }
+    
+        // Verificar si el hijo izquierdo existe y es mayor que el padre actual
+        if (hijoIzquierdo < tamaño && datos.get(hijoIzquierdo).compareTo(datos.get(maximo)) > 0) {
+            maximo = hijoIzquierdo;
+        }
+    
+        // Verificar si el hijo derecho existe y es mayor que el máximo actual
+        if (hijoDerecho < tamaño && datos.get(hijoDerecho).compareTo(datos.get(maximo)) > 0) {
+            maximo = hijoDerecho;
+        }
+    
+        // Si el máximo no es el índice actual, intercambiar y continuar reorganizando
+        if (maximo != indice) {
+            intercambiar(indice, maximo);
+            ordenarPorHijo(maximo);
         }
     }
 
