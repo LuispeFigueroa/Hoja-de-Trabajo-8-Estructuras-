@@ -1,8 +1,13 @@
 import java.util.Vector;
 
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
+    // Atributos
+    /**
+     *
+     */
     public Vector<E> datos;
 
+    // Métodos
     /**
      * 
      */

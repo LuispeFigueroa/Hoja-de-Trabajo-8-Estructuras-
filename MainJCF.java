@@ -1,17 +1,17 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Main {
+public class MainJCF {
     public static void main(String[] args) {
-        PriorityQueue<Paciente> cola = new VectorHeap<>();
+        PriorityQueue<Paciente> cola = new PriorityQueue<>();
         Scanner scanner = new Scanner(System.in);
-
-        try (BufferedReader br = new BufferedReader(new FileReader("pacientes.txt"))) {
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader("pacientes.txt"))) {
             String linea;
-            br.readLine();
-            while ((linea = br.readLine()) != null) {
+            while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
 
                 String nombre = datos[0].trim();
@@ -19,13 +19,12 @@ public class Main {
                 char prioridad = datos[2].trim().charAt(0);
 
                 Paciente paciente = new Paciente(nombre, lesion, prioridad);
-                cola.insertar(paciente);
+                cola.add(paciente);
             }
-        }
+        } 
         catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("Error al leer el archivo: " + e.getMessage());
         }
-
         boolean seguir = true;
         while (seguir) {
             System.out.println("\nMENU");
@@ -38,7 +37,7 @@ public class Main {
             switch (opcion) {
                 case 1:
                     try {
-                        Paciente siguiente = cola.devolverMax();
+                        Paciente siguiente = cola.peek();
                         System.out.println("\nSiguiente paciente: " + siguiente.toString());
                     }
                     catch (Exception e) {
@@ -47,7 +46,7 @@ public class Main {
                     break;
                 case 2:
                     try {
-                        Paciente atendido = cola.eliminarMax();
+                        Paciente atendido = cola.remove();
                         System.out.println("\nPaciente atendido: " + atendido.toString());
                     }    
                     catch (Exception e) {
@@ -64,5 +63,5 @@ public class Main {
             }
         }
         scanner.close();
-    }
+    }    
 }
