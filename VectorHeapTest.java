@@ -1,21 +1,27 @@
-import java.beans.Transient;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class VectorHeapTest {
-    @Before
-    public void setUp() {
-        VectorHeap heap = new VectorHeap<>();
-    }
-    
     // Pruebas para el método insertar
+    /**
+     * 
+     */
     @Test
     public void testInsertarEnHeapVacio() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         heap.insertar(10);
         assertEquals(1, heap.getDatos().size());
         assertEquals(Integer.valueOf(10), heap.getDatos().get(0));
     }
     
+    /**
+     * 
+     */
     @Test
     public void testInsertarVariosElementosOrdenados() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         heap.insertar(5);
         heap.insertar(10);
         heap.insertar(15);
@@ -25,8 +31,12 @@ public class VectorHeapTest {
         assertEquals(Integer.valueOf(15), heap.getDatos().get(0));
     }
     
+    /**
+     * 
+     */
     @Test
     public void testInsertarVariosElementosDesordenados() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         heap.insertar(15);
         heap.insertar(5);
         heap.insertar(10);
@@ -37,8 +47,12 @@ public class VectorHeapTest {
     }
     
     // Pruebas para el método eliminarMax
+    /**
+     * 
+     */
     @Test
     public void testEliminarMaxEnHeapConUnElemento() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         heap.insertar(10);
         Integer max = heap.eliminarMax();
         
@@ -46,8 +60,12 @@ public class VectorHeapTest {
         assertEquals(0, heap.getDatos().size());
     }
     
+    /**
+     * 
+     */
     @Test
     public void testEliminarMaxEnHeapConVariosElementos() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         heap.insertar(10);
         heap.insertar(20);
         heap.insertar(15);
@@ -67,8 +85,12 @@ public class VectorHeapTest {
         assertEquals(Integer.valueOf(20), max);
     }
 
+    /**
+     * 
+     */
     @Test
     public void testEliminarMaxSecuencia() {
+        VectorHeap<Integer> heap = new VectorHeap<Integer>();
         // Insertamos en orden aleatorio
         heap.insertar(15);
         heap.insertar(30);

@@ -5,6 +5,9 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class MainJCF {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         PriorityQueue<Paciente> cola = new PriorityQueue<>();
         Scanner scanner = new Scanner(System.in);
