@@ -1,0 +1,10 @@
+Nombre, lesion, prioridad
+Luis Pedro, Apendicitis, B
+Sofia, Cancer, A
+Javier, Balazo, J
+Alessandra, Tos, C
+Pablo, 1, A
+Sebastian, 2, B
+Sandra, 3, C
+Daniela, 6, G
+Veronica, 5, J
