@@ -5,7 +5,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
     /**
      *
      */
-    public Vector<E> datos;
+    private Vector<E> datos;
 
     // Métodos
     /**
@@ -99,5 +99,13 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
             E max = datos.get(0);
             return max;
         }
+    }
+
+    public Vector<E> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(Vector<E> datos) {
+        this.datos = datos;
     }
 }
