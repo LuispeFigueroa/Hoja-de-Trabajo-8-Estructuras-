@@ -52,6 +52,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         datos.set(j, temporal);
     }
 
+    @Override
     public E eliminarMax() {
         if (datos.isEmpty()) {
             throw new IllegalStateException("No hay elementos en la cola.");
@@ -91,6 +92,7 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
+    @Override
     public E devolverMax() {
         if (datos.isEmpty()) {
             throw new IllegalStateException("No hay elementos en la cola.");
@@ -101,10 +103,16 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
+    /**
+     * @return
+     */
     public Vector<E> getDatos() {
         return datos;
     }
 
+    /**
+     * @param datos
+     */
     public void setDatos(Vector<E> datos) {
         this.datos = datos;
     }
