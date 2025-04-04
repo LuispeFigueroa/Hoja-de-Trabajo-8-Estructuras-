@@ -83,7 +83,7 @@ env = simpy.Environment()
 hospital = Hospital(env, num_doctores=7, num_enfermeras=4, num_rayosX=2)
 env.process(genPacientes(env, hospital, intervalo=7))
 
-env.run(until = 200)
+env.run(until = 150)
 
 
 # Gráfica
